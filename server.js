@@ -18,6 +18,19 @@ var challenges = require('./lib/challenges');
 // Dynamic Routes
 
 
+app.get('/challenges', function(req, res) {
+  if (req.query.next === 'true') {
+    var fiveSix = challenges.splice(0, 2);
+    res.json(fiveSix);
+  } else {
+  var firstFour = challenges.splice(0, 4);
+  res.json(firstFour);
+  }
+});
+
+
+
+
 var port = 3000;
 app.listen(port, function(){
   console.log("listening on port " + port);
